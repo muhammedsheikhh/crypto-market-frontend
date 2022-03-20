@@ -45,15 +45,66 @@ export default {
 </script>
 
 <template>
-  <div class="cryptos-show">
-    <h1>{{ crypto.name }}</h1>
-    <p>{{ crypto.symbol }}</p>
-    <p>{{ crypto.volume }}</p>
-    <p>Price: {{ crypto.lastPrice }}$</p>
-    <br />
-    <router-link to="/cryptos">Back to all cryptos</router-link>
-    <br />
-    <input type="text" v-model="quantity" />
-    <button v-on:click="createCartedProduct()">Buy Now</button>
-  </div>
+  <section class="pricing-table section" id="pricing">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="title text-center">
+            <h4>Easy Buying</h4>
+            <h2>Buying.</h2>
+            <span class="border"></span>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque
+              sit!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+              <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12 hello">
+                  <div class="pricing-item">
+                    <h3>Volume: {{ crypto.volume }}</h3>
+                    <div class="pricing-body">
+                      <div class="price">
+                        <span>{{ crypto.symbol }}</span>
+                        <span class="sup"></span>
+                      </div>
+                      <div class="progress" data-percent="60%">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <p>Price: {{ crypto.lastPrice }}$</p>
+                      <input type="text" v-model="quantity" />
+                      <br />
+                      <a class="btn btn-main" v-on:click="createCartedProduct()">Buy</a>
+                      <br />
+                      <router-link to="/cryptos">Back to all cryptos</router-link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="custom-pricing text-center mt-30">
+            <p>The price will be recalculated in 27 seconds</p>
+            <p><a href="">How is the price calculated ?</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End container -->
+  </section>
 </template>
+<style>
+.hello {
+  margin-left: 33%;
+}
+</style>
