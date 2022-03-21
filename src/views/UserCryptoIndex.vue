@@ -46,18 +46,52 @@ export default {
 
 <template>
   <div class="cryptos-index">
-    <h1>Your Cryptocurrencies</h1>
-    <div v-for="crypto in cryptos" v-bind:key="crypto.id">
-      <h2>{{ crypto.crypto.symbol }}</h2>
-      <p>{{ crypto.crypto.code }}</p>
-      <p>{{ crypto.crypto.price }}$</p>
-      <p>{{ crypto.quantity }}</p>
-      <p>{{ crypto.total }}</p>
-      <p>{{ crypto.status }}</p>
-      <a v-bind:href="`/cryptos/${crypto.id}`">More details</a>
-      <br />
-      <button v-on:click="showUserCrypto(crypto)">Sell Now</button>
-    </div>
+    <section class="pricing-table section" id="pricing">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="title text-center">
+              <h2>Portfolio</h2>
+              <span class="border"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="row">
+                  <div class="col-md-4 col-sm-6 col-xs-12" v-for="crypto in cryptos" v-bind:key="crypto.id">
+                    <div class="pricing-item">
+                      <h3>Volume: {{ crypto.crypto.code }}</h3>
+                      <div class="pricing-body">
+                        <div class="price">
+                          <span>{{ crypto.crypto.code }}</span>
+                          <span class="sup"></span>
+                        </div>
+                        <div class="progress" data-percent="45%">
+                          <div class="progress-bar"></div>
+                        </div>
+                        <p>Price: {{ crypto.crypto.price }} $</p>
+                        <p>Quantity: {{ crypto.quantity }}</p>
+                        <p>Total Worth: {{ crypto.total }} $</p>
+                        <a class="btn btn-main" v-on:click="showUserCrypto(crypto)">Sell</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+      <!-- End container -->
+    </section>
+
     <dialog id="photo-details">
       <form method="dialog">
         <h1>Selling</h1>
