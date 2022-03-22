@@ -5,7 +5,8 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
+axios.defaults.baseURL =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dry-fortress-25774.herokuapp.com/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
