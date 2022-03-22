@@ -75,7 +75,7 @@ export default {
               <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12" v-for="crypto in cryptos" v-bind:key="crypto.id">
                   <div class="pricing-item">
-                    <h3>Volume: {{ crypto.volume }}</h3>
+                    <h3>Volume: {{ parseFloat(crypto.volume) }}</h3>
                     <div class="pricing-body">
                       <div class="price">
                         <span>{{ crypto.symbol }}</span>
@@ -84,7 +84,7 @@ export default {
                       <div class="progress" data-percent="45%">
                         <div class="progress-bar"></div>
                       </div>
-                      <p>Price: {{ crypto.lastPrice }}$</p>
+                      <p>Price: {{ parseFloat(crypto.lastPrice) }}$</p>
                       <a class="btn btn-main" v-bind:href="`/cryptos/${crypto.symbol}`">Buy</a>
                     </div>
                   </div>

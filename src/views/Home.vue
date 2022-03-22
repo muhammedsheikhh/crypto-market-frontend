@@ -553,7 +553,7 @@ Start Call To Action
             <br />
             nisi elit consequat ipsum, nesagittis sem nid elit. Duis sed odio sitain elit.
           </p>
-          <a href="" class="btn btn-main">Get Started</a>
+          <a href="/signup" class="btn btn-main">Get Started</a>
         </div>
       </div>
       <!-- End row -->

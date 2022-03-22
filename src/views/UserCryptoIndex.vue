@@ -38,6 +38,8 @@ export default {
       axios.delete("/user_cryptos/" + crypto.id).then((response) => {
         console.log("cryptos destroy", response);
         this.$router.push("/UserCrypto");
+        var index = this.cryptos.indexOf(crypto);
+        this.cryptos.splice(index, 1);
       });
     },
   },
@@ -64,7 +66,7 @@ export default {
                 <div class="row">
                   <div class="col-md-4 col-sm-6 col-xs-12" v-for="crypto in cryptos" v-bind:key="crypto.id">
                     <div class="pricing-item">
-                      <h3>Volume: {{ crypto.crypto.code }}</h3>
+                      <h3>{{ crypto.crypto.code }}</h3>
                       <div class="pricing-body">
                         <div class="price">
                           <span>{{ crypto.crypto.code }}</span>
@@ -73,8 +75,25 @@ export default {
                         <div class="progress" data-percent="45%">
                           <div class="progress-bar"></div>
                         </div>
-                        <p>Price: {{ crypto.crypto.price }} $</p>
+                        <p
+                          v-bind:class="{
+                            'text-success': crypto.crypto.price - crypto.bprice >= 0,
+                            'text-danger': crypto.crypto.price - crypto.bprice < 0,
+                          }"
+                        >
+                          Current Price: {{ crypto.crypto.price }} $
+                        </p>
+                        <p
+                          v-bind:class="{
+                            'text-success': crypto.crypto.price - crypto.bprice >= 0,
+                            'text-danger': crypto.crypto.price - crypto.bprice < 0,
+                          }"
+                        >
+                          Profit: {{ parseInt((crypto.crypto.price - crypto.bprice) * crypto.quantity) }} $
+                        </p>
                         <p>Quantity: {{ crypto.quantity }}</p>
+                        <p>Buy Price: {{ parseInt(crypto.bprice) }}</p>
+
                         <p>Total Worth: {{ crypto.total }} $</p>
                         <a class="btn btn-main" v-on:click="showUserCrypto(crypto)">Sell</a>
                       </div>

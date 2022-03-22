@@ -127,10 +127,10 @@ Fixed Navigation
                   <router-link class="nav-link" to="/cryptos">Buy/Sell</router-link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="faq.html">F.A.Q</a>
+                  <a class="nav-link" href="/Faq">F.A.Q</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
+                  <a class="nav-link" href="/Contact">Contact</a>
                 </li>
                 <li class="nav-item">
                   <router-link class="nav-link" to="/UserCrypto">Wallet</router-link>

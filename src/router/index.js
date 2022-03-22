@@ -6,6 +6,8 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import UserCryptoIndex from "../views/UserCryptoIndex.vue";
+import Faq from "../views/Faq.vue";
+import Contact from "../views/Contact.vue";
 
 const routes = [
   {
@@ -27,6 +29,8 @@ const routes = [
   { path: "/login", name: "login", component: Login },
   { path: "/logout", name: "logout", component: Logout },
   { path: "/UserCrypto", name: "usercrypto-index", component: UserCryptoIndex },
+  { path: "/Faq", name: "faq", component: Faq },
+  { path: "/Contact", name: "contact", component: Contact },
 ];
 
 const router = createRouter({
