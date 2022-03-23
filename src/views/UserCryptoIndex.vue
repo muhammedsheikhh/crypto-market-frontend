@@ -5,7 +5,7 @@ export default {
     return {
       cryptos: [],
       userCrypto: { crypto: {} },
-      editUserCrypto: {},
+      editUserCryptoQuantity: 0,
     };
   },
   created: function () {
@@ -20,15 +20,18 @@ export default {
     },
     showUserCrypto: function (userCrypto) {
       this.userCrypto = userCrypto;
-      this.editUserCrypto = userCrypto;
+      this.editUserCryptoQuantity = userCrypto.quantity;
       document.querySelector("#photo-details").showModal();
     },
     updateUserCrypto: function (userCrypto) {
+      var params = { quantity: userCrypto.quantity - this.editUserCryptoQuantity };
+      console.log("params", params, userCrypto.quantity, this.editUserCryptoQuantity);
       axios
-        .patch("/user_cryptos/" + userCrypto.id, this.editUserCrypto)
+        .patch("/user_cryptos/" + userCrypto.id, params)
         .then((response) => {
           console.log("photos update", response);
-          this.userCrypto = {};
+          // this.userCrypto = {};
+          userCrypto.quantity = response.data.quantity;
         })
         .catch((error) => {
           console.log("photos update error", error.response);
@@ -117,7 +120,7 @@ export default {
         <p>Name: {{ userCrypto.crypto.name }}</p>
         <p>quantity: {{ userCrypto.quantity }}</p>
         <p>
-          <input type="text" v-model="editUserCrypto.quantity" />
+          <input type="text" v-model="editUserCryptoQuantity" />
         </p>
         <button v-on:click="updateUserCrypto(userCrypto)">Sell some</button>
         <br />
